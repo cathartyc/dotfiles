@@ -1,6 +1,6 @@
 #!/bin/bash
 # copyq --start-server &
-swaybg -i ~/Pictures/pcb_wallpaper.jpg -m fill &
+swaybg -i ~/.config/hypr/pcb_wallpaper.jpg -m fill &
 waybar &
 # nextcloud &
 swayidle -w &
