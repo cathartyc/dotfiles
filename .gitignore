@@ -1,0 +1,6 @@
+*
+!.gitignore
+!hypr/*
+!swaylock/*
+!waybar/*
+!swayidle/*
