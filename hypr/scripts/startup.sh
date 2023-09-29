@@ -1,6 +1,6 @@
 #!/bin/bash
 copyq --start-server
-swaybg -i ~/.config/hypr/pcb_wallpaper.jpg -m fill &
+swaybg -i ~/.config/hypr/wallpapers/balls.jpg -m fill &
 waybar &
 swayidle -w &
 # Workaround: for some reasons, xdg-desktop-portal-hyprland goes crazy at startup 
