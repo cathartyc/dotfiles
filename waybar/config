@@ -119,10 +119,10 @@
         "format": "{}% "
     },
     "disk": {
-        "interval": 30,
+        "interval": 10,
         "format": "{percentage_free}% 󰋊",
         "tooltip-format": "Only {free} remaining",
-        "path": "/"
+        "path": "/home"
     },
     "temperature": {
         // "thermal-zone": 2,
