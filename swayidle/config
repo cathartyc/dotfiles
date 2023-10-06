@@ -1,2 +1,2 @@
-timeout 300 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+timeout 300 'swaylock -f; ddcutil setvcp D6 04; hyprctl dispatch dpms off eDP-1' resume 'ddcutil setvcp D6 01; hyprctl dispatch dpms on' 
 before-sleep 'swaylock -f'
