@@ -1,22 +1,26 @@
 # My dotfiles
 
-Here are my dotfiles for Hyprland.
+Here are my dotfiles.
 
-The setup is far from finished/mature/stable/etc., so better to consider it as
+The setup is far from finished/mature/stable/etc., so it's better to consider it as
 a source of inspiration.
 
 ## Requirements
 
-I use this programs:
+My configs are related to:
 ```
 - Hyprland
+- i3 + picom
 - Waybar
 - Kitty
 - Swaybg
-- Swayidle
-- Swaylock-effects
-- Copyq
-- wofi
-- dunst
+- Hypridle
+- Hyprlock
+- Clipse
+- SwayOSD
+- Ranger
+- Flameshot + grimshot (going to drop the latter soon)
+- Neovim (soon)
 ```
-My setup usually consists in an external monitor on the left of my laptop.
+My setup usually consists in an external monitor on the left of my laptop, controlled
+via DDC.
