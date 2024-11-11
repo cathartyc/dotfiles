@@ -20,7 +20,7 @@ My configs are related to:
 - SwayOSD
 - Ranger
 - Flameshot + grimshot (going to drop the latter soon)
-- Neovim (soon)
+- Neovim
 ```
 My setup usually consists in an external monitor on the left of my laptop, controlled
 via DDC.
