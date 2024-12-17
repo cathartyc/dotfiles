@@ -16,6 +16,7 @@ My configs are related to:
 - Swaybg
 - Hypridle
 - Hyprlock
+- Sway audio idle inhibit
 - Clipse
 - SwayOSD
 - Ranger
