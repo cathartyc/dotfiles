@@ -1,27 +1,30 @@
-# My dotfiles
+# Dotfiles
 
-Here are my dotfiles.
+Here are my dotfiles. This is constantly WIP.
 
-The setup is far from finished/mature/stable/etc., so it's better to consider it as
-a source of inspiration.
-
-## Requirements
-
-My configs are related to:
-```
+## versioned configs
+- Bash
 - Hyprland
-- i3 + picom
-- Waybar
-- Kitty
-- Swaybg
 - Hypridle
 - Hyprlock
-- Sway audio idle inhibit
+- Waybar
+- i3 + picom
+- Kitty
+- Swaybg
 - Clipse
-- SwayOSD
 - Ranger
 - Flameshot + grimshot (going to drop the latter soon)
 - Neovim
-```
-My setup usually consists in an external monitor on the left of my laptop, controlled
-via DDC.
+- Rust
+- Perl
+- NVM (Node Version Manager)
+- Starship
+- GitHub CLI (`gh`)
+
+## dependencies
+For Hyprland, I use
+- waybar
+- SwayOSD
+- ddcutil
+- sway audio idle inhibit
+
