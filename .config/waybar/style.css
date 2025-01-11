@@ -103,6 +103,8 @@ button:hover {
 #scratchpad,
 #language,
 #keyboard-state,
+#custom-unixepoch,
+#custom-power,
 #mpris {
     /*border-radius: 5px;*/
     padding: 5px;
