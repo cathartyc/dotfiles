@@ -32,6 +32,7 @@ vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.list = true
 vim.o.listchars = 'tab:» ,lead:•,trail:•'
+vim.o.clipboard = 'unnamedplus'
 
 require("lazy").setup({
     { import = "plugins" },
@@ -51,20 +52,15 @@ require("lazy").setup({
     },
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    'mhartington/formatter.nvim',
-    "nvim-tree/nvim-web-devicons",
     {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
+        "neovim/nvim-lspconfig",
         lazy = false,
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
+        event = {
+            'InsertEnter',
+            'BufWritePre'
         },
-        config = function()
-            require("nvim-tree").setup {}
-        end,
     },
+    'mhartington/formatter.nvim',
     "nvim-lua/plenary.nvim",
     -- { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
     {
@@ -142,8 +138,8 @@ require("mason-lspconfig").setup {
         "clangd",
         "bashls",
         "matlab_ls",
-        "rust_analyzer",
-        "hyprls"
+        "hyprls",
+        "ruff"
     }
 }
 
@@ -154,7 +150,9 @@ require("mason-lspconfig").setup_handlers {
     -- and will be called for each installed server that doesn't have
     -- a dedicated handler.
     function(server_name) -- default handler (optional)
-        require("lspconfig")[server_name].setup {}
+        require("lspconfig")[server_name].setup {
+            capabilities = capabilities
+        }
     end,
     -- Next, you can provide a dedicated handler for specific servers.
     -- For example, a handler override for the `rust_analyzer`:
@@ -208,10 +206,25 @@ require("mason-lspconfig").setup_handlers {
             },
             capabilities = capabilities
         }
-    end
+    end,
+    ['basedpyright'] = function()
+        require 'lspconfig'.basedpyright.setup {
+            capabilities = capabilities,
+            settings = {
+                basedpyright = {
+                    -- Using Ruff's import organizer
+                    disableOrganizeImports = true,
+                },
+                python = {
+                    analysis = {
+                        -- Ignore all files for analysis to exclusively use Ruff for linting
+                        ignore = { '*' },
+                    }
+                },
+            }
+        }
+    end,
 }
-
-
 
 
 vim.filetype.add({
@@ -255,6 +268,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 timeout_ms = 5000,
             }
         end, { buffer = 0, desc = "Format buffer" })
+        vim.keymap.set("n", "<leader>gh", function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ 0 }), { 0 })
+        end, { buffer = buffer, desc = "Toggle inlay hints" }
+        )
     end,
 })
 
