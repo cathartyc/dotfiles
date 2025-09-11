@@ -13,6 +13,6 @@ return {
                 }
             }
         })
-        vim.cmd('colorscheme carbonfox')
+--        vim.cmd('colorscheme carbonfox')
     end,
 }

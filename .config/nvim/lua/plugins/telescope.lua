@@ -9,4 +9,13 @@ return {
         { '<leader>fb', '<cmd>Telescope buffers<CR>',    desc = "Buffers" },
         { '<leader>fh', '<cmd>Telescope help_tags<CR>',  desc = "Help tags" },
     },
+    config = function()
+        require('telescope').setup({
+            pickers = {
+                colorscheme = {
+                    enable_preview = true
+                }
+            }
+        })
+    end
 }
