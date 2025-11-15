@@ -1,7 +1,4 @@
 *
-!.gitignore
-!hypr/*
-!hypr/scripts/*
-!swaylock/*
-!waybar/*
-!swayidle/*
+!/.git
+!/.*
+!/.*/**
