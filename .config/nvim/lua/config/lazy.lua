@@ -16,39 +16,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 --------------------------------------------------------------------------------
--- vim "classic" options
-
--- for keybindings
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
--- for nvim-tree
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
--- syntax highlight for doxygen
-vim.g.load_doxygen_syntax = 1
--- numbers!
-vim.o.number = true
-vim.o.relativenumber = true
--- default tab/space stuff
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.expandtab = true
-vim.o.shiftwidth = 4
--- formatting
-vim.o.textwidth = 79
-vim.o.wrap = true
-vim.o.linebreak = true
---vim.opt.colorcolumn = { "73", "81" }
-vim.o.list = true
-vim.o.listchars = 'tab:» ,trail:•'
--- extra
-vim.o.clipboard = "unnamedplus"
-vim.o.exrc = true
--- theme
-vim.cmd [[ colorscheme slate ]]
+-- vim settings, such as wrap, textwidth, fold, etc.
+require("config.vim_options")
+-- theme/highlight settings
+require("config.theme")
+-- custom commands
+require("config.commands")
 --------------------------------------------------------------------------------
 -- lazy setup
-
 require("lazy").setup({
   spec = { { import = "plugins" } },
   install = { colorscheme = { "slate" } },

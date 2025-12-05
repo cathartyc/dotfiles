@@ -8,7 +8,9 @@ local languages = {
   "hyprlang",
   "css",
   "make",
-  "python"
+  "python",
+  "markdown",
+  "markdown_inline",
 }
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -17,6 +19,9 @@ vim.api.nvim_create_autocmd("FileType", {
     local ok = pcall(vim.treesitter.language.inspect, lang)
     if ok then
       pcall(vim.treesitter.start) -- auto-detects buffer + lang
+      -- enable LSP folding
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo.foldmethod = 'expr'
     end
   end,
 })
