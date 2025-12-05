@@ -6,9 +6,12 @@
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window",
-        "hyprland/submap"
+        "hyprland/submap",
+        "niri/workspaces",
+        "niri/window"
     ],
     "modules-center": [
+        "cava",
         "image",
         "mpris"
     ],
@@ -23,13 +26,21 @@
         "backlight",
         "keyboard-state",
         "hyprland/language",
+        "niri/language",
         "battery",
+        "systemd-failed-units",
         "clock",
         "custom/unixepoch",
         "tray",
         "custom/power"
     ],
-
+    "systemd-failed-units": {
+        "hide-on-ok": false, // Do not hide if there is zero failed units.
+        "format": "✗ {nr_failed}",
+        "format-ok": "✓",
+        "system": true, // Monitor failed systemwide units.
+        "user": true // Ignore failed user units.
+    },
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -60,15 +71,40 @@
         }
     },
     // TODO: One day I would like to enable this, but it does not work
-//    "custom/waybar-pomodoro": {
-//		"format": "Pomodoro: {}",
-//        "exec": "~/.config/waybar/waybar-pomodoro/target/release/waybar-pomodoro",
-//        "return-type": "json"
-//    },
+    //    "custom/waybar-pomodoro": {
+    //		"format": "Pomodoro: {}",
+    //        "exec": "~/.config/waybar/waybar-pomodoro/target/release/waybar-pomodoro",
+    //        "return-type": "json"
+    //    },
+    "cava": {
+        // "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+        "framerate": 30,
+        "autosens": 1,
+        "sensitivity": 100,
+        "bars": 14,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "hide_on_silence": false,
+        // "format_silent": "quiet",
+        "method": "pulse",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "noise_reduction": 0.77,
+        "input_delay": 2,
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                   "on-click-right": "mode"
+                   }
+    },
     "image": {
         "exec": "~/.config/waybar/albumart.sh",
         "size": 32,
-        "interval": 10
+        "interval": 10,
+        "empty-output": true
     },
     "mpris": {
         "interval": 1,
@@ -82,7 +118,8 @@
         "status-icons": {
             "paused": "󰏤"
         },
-        "max-length": 60
+        "max-length": 60,
+        "empty-output": true
         //"ignored-players": ["firefox"]
     },
     "hyprland/window": {
@@ -116,17 +153,17 @@
         }
     },
     "custom/audio_idle_inhibitor": {
-		"format": "{icon}",
-		"exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
-		"exec-if": "which sway-audio-idle-inhibit",
-		"return-type": "json",
-		"format-icons": {
-			"output": "",
-			"input": "",
-			"output-input": " ",
-			"none": ""
-		}
-	},
+        "format": "{icon}",
+        "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+        "exec-if": "which sway-audio-idle-inhibit",
+        "return-type": "json",
+        "format-icons": {
+            "output": "",
+            "input": "",
+            "output-input": " ",
+            "none": ""
+        }
+    },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
@@ -151,7 +188,7 @@
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 150,
-			"transition-left-to-right": false
+            "transition-left-to-right": false
         },
         "modules": [
             "cpu",
@@ -201,7 +238,7 @@
         ]
     },
     "battery": {
-        "interval": 1,
+        "interval": 10,
         "states": {
             "good": 85,
             "warning": 30,
@@ -246,7 +283,7 @@
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
         "format": " {status}",
-        "format-disabled": "", // an empty format will hide the module
+        "format-disabled": " off", // an empty format will hide the module
         "format-connected": " 󰁾{device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
@@ -281,34 +318,40 @@
         "interval": 1,
         "exec": "date +%s"
     },
-//    "custom/media": {
-//        "format": "{icon} {}",
-//        "return-type": "json",
-//        "max-length": 40,
-//        "format-icons": {
-//            "spotify": "",
-//            "default": "🎜"
-//        },
-//        "escape": true,
-//        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-//        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-//    },
+    //    "custom/media": {
+    //        "format": "{icon} {}",
+    //        "return-type": "json",
+    //        "max-length": 40,
+    //        "format-icons": {
+    //            "spotify": "",
+    //            "default": "🎜"
+    //        },
+    //        "escape": true,
+    //        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    //        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    //    },
     "hyprland/language": {
         "format": "{}",
         "format-en": "US",
         "format-it": "IT",
         "format-ru": "RU"
     },
-        "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+    "niri/language": {
+        "format": "{}",
+        "format-en": "US",
+        "format-it": "IT",
+        "format-ru": "RU"
+    },
+    "custom/power": {
+        "format": "⏻ ",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+        "menu-actions": {
+            "shutdown": "poweroff",
+            "reboot": "reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate"
+        }
     }
 }
