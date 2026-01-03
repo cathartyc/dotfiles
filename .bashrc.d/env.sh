@@ -42,3 +42,5 @@ export HISTCONTROL=ignoreboth:erasedups
 GPG_TTY=$(tty)
 export GPG_TTY
 
+export MANROFFOPT="-P -c"
+export MANPAGER="less --use-color -Dd+r -Du+b"
