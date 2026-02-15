@@ -12,6 +12,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
+    enabled = false,
     dependencies = {
       -- TODO: what are these for? Where doc?
       "hrsh7th/cmp-nvim-lsp",
