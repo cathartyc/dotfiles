@@ -47,9 +47,9 @@ input {
 
     mouse {
         // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
+        //natural-scroll
+        accel-speed 0.8
+        accel-profile "flat"
         // scroll-method "no-scroll"
     }
 
@@ -417,13 +417,14 @@ binds {
 
     // Running programs
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "fuzzel --use-bold -T 'kitty -e {cmd}'"; }
+    Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Ctrl+Alt+V hotkey-overlay-title="Clipboard: clipse" { spawn-sh "ghostty --class='com.github.clipse' -e 'clipse'"; }
     Mod+Alt+F hotkey-overlay-title="Firefox" { spawn "firefox"; }
     // Running system control stuff
     Super+Alt+L hotkey-overlay-title="Lock the screen: swaylock" { spawn "swaylock"; }
     Mod+N hotkey-overlay-title="Toggle dunst notifications" { spawn-sh "dunstctl set-paused toggle && notify-send \"Notifications enabled\" && dunst close-all"; }
     Mod+B { spawn-sh "pkill -USR1 waybar"; }
+    Mod+F1 { spawn-sh "systemctl suspend"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -458,8 +459,8 @@ binds {
     Mod+Q repeat=false { close-window; }
 
     Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
+    //Mod+Down  { focus-window-down; }
+    //Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
     Mod+H     { focus-column-left; }
     //Mod+J     { focus-window-down; }
@@ -478,7 +479,9 @@ binds {
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
     Mod+J     { focus-window-or-workspace-down; }
+    Mod+Down     { focus-window-or-workspace-down; }
     Mod+K     { focus-window-or-workspace-up; }
+    Mod+Up     { focus-window-or-workspace-up; }
     Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
     Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
 
@@ -697,3 +700,5 @@ binds {
     Mod+Shift+P { power-off-monitors; }
     Mod+P { spawn "~/.config/niri/move-to-urgent"; }
 }
+
+include "local.kdl"
