@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+export EDITOR=nvim
+export VISUAL=nvim
+export GTK_THEME=Adwaita:dark
+export QT_STYLE_OVERRIDE=kvantum
+export MOZ_GMP_PATH=/usr/lib64/mozilla/plugins/gmp-gmpopenh264/system-installed
+export ELECTRON_OZONE_PLATFORM_HINT=auto
+#export PATH=$PATH:$HOME/.local/bin
+# for gpg-agent-ssh
+export SSH_AGENT_PID=""
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+# for ssh-agent.service
+#export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+export ACCENT_COLOR="7FC8FF"
+#export ACCENT_COLOR="#7fc8ff"

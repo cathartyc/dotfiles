@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# .bash_profile
+
+source "$HOME/.profile_env"
+
+#if uwsm check may-start && uwsm select; then
+#    exec uwsm start select
+#fi
+if [ "$(tty)" = "/dev/tty1" ]; then
+    if [ -z "$(pgrep niri-session)" ]; then
+        exec niri-session -l
+        # exec Hyprland
+    else
+        echo "Niri already running"
+        #echo "Hyprland session already running"
+    fi
+fi
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+    source "$HOME/.bashrc"
+fi
+
