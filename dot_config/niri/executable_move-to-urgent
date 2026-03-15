@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+niri msg windows | grep \(urgent\) | grep -oE '[0-9]+' | xargs -I{} niri msg action focus-window --id {} && niri msg unset-window-urgent --id {}
