@@ -15,3 +15,11 @@ tar-ez() {
 alias la="ls -la"
 # Manage the dotfiles repo
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
+
+dotnvim() {
+    if [[ $# -ge 1 ]]; then
+        chezmoi edit --watch "$@"
+    else
+        echo "Cannot watch the whole directory." >&2
+    fi
+}
