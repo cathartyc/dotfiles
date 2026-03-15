@@ -1,8 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: JetBrainsMono Nerd Font
-        /*Sauce Code Pro , FontAwesome, Roboto, Helvetica, Arial, sans-serif*/
-    ;
+    font-family: JetBrains Mono;
     font-size: 14px;
     min-height: 0;
 }
