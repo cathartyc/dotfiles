@@ -376,12 +376,12 @@ workspace "mail"
 workspace "chat"
 
 window-rule {
-    match at-startup=true app-id="discord"
+    match at-startup=true app-id="vesktop"
     match at-startup=true app-id="telegram"
     match at-startup=true app-id="FFPWA-01KA16HKXA2WFK5BQXSFQQ0Y78"
 
     open-on-workspace "chat"
-	open-focused false
+    open-focused false
 }
 window-rule {
     match at-startup=true app-id=r#"Thunderbird$"#
@@ -416,12 +416,12 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Running programs
-    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+R hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "fuzzel --use-bold -T 'kitty -e {cmd}'"; }
-    Ctrl+Alt+V hotkey-overlay-title="Clipboard: clipse" { spawn-sh "kitty --class clipse -e 'clipse'"; }
+    Ctrl+Alt+V hotkey-overlay-title="Clipboard: clipse" { spawn-sh "ghostty --class='com.github.clipse' -e 'clipse'"; }
     Mod+Alt+F hotkey-overlay-title="Firefox" { spawn "firefox"; }
     // Running system control stuff
-    Super+Alt+L hotkey-overlay-title="Lock the screen: hyprlock" { spawn "hyprlock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the screen: swaylock" { spawn "swaylock"; }
     Mod+N hotkey-overlay-title="Toggle dunst notifications" { spawn-sh "dunstctl set-paused toggle && notify-send \"Notifications enabled\" && dunst close-all"; }
     Mod+B { spawn-sh "pkill -USR1 waybar"; }
 
