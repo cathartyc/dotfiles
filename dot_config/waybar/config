@@ -4,14 +4,14 @@
     "spacing": 4, // Gaps between modules (4px)
     "reload_style_on_change": true,
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/window",
-        "hyprland/submap",
-        "niri/workspaces",
-        "niri/window"
+        //"hyprland/workspaces",
+        //"hyprland/window",
+        //"hyprland/submap",
+        "niri/workspaces"
+        //"niri/window"
     ],
     "modules-center": [
-        "cava",
+        //"cava",
         "image",
         "mpris"
     ],
@@ -24,22 +24,21 @@
         "bluetooth",
         "group/vitals",
         "backlight",
-        "keyboard-state",
-        "hyprland/language",
+        //"keyboard-state",
+        //"hyprland/language",
         "niri/language",
         "battery",
         "systemd-failed-units",
-        "clock",
+        //"clock",
         "custom/unixepoch",
         "tray",
         "custom/power"
     ],
     "systemd-failed-units": {
-        "hide-on-ok": false, // Do not hide if there is zero failed units.
-        "format": "✗ {nr_failed}",
-        "format-ok": "✓",
-        "system": true, // Monitor failed systemwide units.
-        "user": true // Ignore failed user units.
+        "hide-on-ok": true,
+        "format": "User:✗{nr_failed_user},System:✗{nr_failed_system}",
+        "system": true,
+        "user": true
     },
     // Modules configuration
     "hyprland/workspaces": {
@@ -97,8 +96,8 @@
         "input_delay": 2,
         "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
         "actions": {
-                   "on-click-right": "mode"
-                   }
+            "on-click-right": "mode"
+        }
     },
     "image": {
         "exec": "~/.config/waybar/albumart.sh",
@@ -165,7 +164,7 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 15,
         "spacing": 10
     },
     "clock": {
@@ -265,7 +264,6 @@
         "hide-not-running": true,
         "use-icon": true,
         "icon-name": "input-gaming-symbolic",
-        "icon-spacing": 4,
         "icon-size": 20,
         "tooltip": true,
         "tooltip-format": "Games running: {count}"
@@ -278,7 +276,8 @@
         "tooltip-format": "󰕒:\t{bandwidthUpBits}\n{ifname}:\t{ipaddr}/{cidr}",
         //"format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format": "{bandwidthDownBits} 󰇚"
+        "format": "{bandwidthDownBits} 󰇚",
+        "justify": "right"
     },
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
@@ -316,7 +315,7 @@
     "custom/unixepoch": {
         "format": {},
         "interval": 1,
-        "exec": "date +%s"
+        "exec": "date +'%T %s'"
     },
     //    "custom/media": {
     //        "format": "{icon} {}",
@@ -343,7 +342,7 @@
         "format-ru": "RU"
     },
     "custom/power": {
-        "format": "⏻ ",
+        "format": "󰐥",
         "tooltip": false,
         "menu": "on-click",
         "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
