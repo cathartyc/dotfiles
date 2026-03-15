@@ -147,8 +147,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "󰛊",
+            "deactivated": "󰾫"
         }
     },
     "custom/audio_idle_inhibitor": {
@@ -281,7 +281,8 @@
     },
     "bluetooth": {
         // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-        "format": " {status}",
+        "format": "{status} ",
+        "format-no-controller": "",
         "format-disabled": " off", // an empty format will hide the module
         "format-connected": " 󰁾{device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\t{controller_address}",
@@ -294,7 +295,7 @@
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}  {format_source}",
         "format-bluetooth-muted": "󰟎 {icon}  {format_source}",
-        "format-muted": "󰝟 {format_source}",
+        "format-muted": "{volume}% {icon}",
         "format-source": "{volume}% 󰍬",
         "format-source-muted": "",
         "format-icons": {
@@ -305,7 +306,7 @@
             "portable": "",
             "car": "",
             "default": [
-                "",
+                "󰕿",
                 "󰖀",
                 "󰕾"
             ]
