@@ -12,10 +12,19 @@ tar-ez() {
 }
 
 # Show files with detailed info and include hidden ones
+alias ls="ls --color=auto"
 alias la="ls -la"
-# Manage the dotfiles repo
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
+alias grep="grep --color=auto"
+alias ll="ls -l"
+alias la="ls -lA"
 
+# Git shortcuts
+alias gs="git status"
+alias gc="git commit"
+alias gp="git pull"
+alias gd="git diff"
+
+# Edit dotfiles
 dotnvim() {
     if [[ $# -ge 1 ]]; then
         chezmoi edit --watch "$@"
