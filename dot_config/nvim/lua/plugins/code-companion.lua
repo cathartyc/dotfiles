@@ -1,42 +1,37 @@
 return {
-  "nomnivore/ollama.nvim",
+  "olimorris/codecompanion.nvim",
+  version = "^19.0.0",
   dependencies = {
     "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
   },
-
-  -- All the user commands added by the plugin
-  cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
-
-  keys = {
-    -- Sample keybind for prompt menu. Note that the <c-u> is important for selections to work properly.
-    {
-      "<leader>oo",
-      ":<c-u>lua require('ollama').prompt()<cr>",
-      desc = "ollama prompt",
-      mode = { "n", "v" },
-    },
-
-    -- Sample keybind for direct prompting. Note that the <c-u> is important for selections to work properly.
-    {
-      "<leader>oG",
-      ":<c-u>lua require('ollama').prompt('Generate_Code')<cr>",
-      desc = "ollama Generate Code",
-      mode = { "n", "v" },
-    },
-  },
-
-  ---@type Ollama.Config
   opts = {
-    -- your configuration overrides
-    url = "http://worker.carastello.it:11434",
-    serve = {
-      command = "bash",
-      args = {
-        "-s",
-        "~/Projects/ollama-runner.docker"
-      },
-      stop_command = "podman",
-      stop_args = { "stop", "ollama" },
+    adapters = {
+      http = {
+        ollama = function()
+          return require("codecompanion.adapters").extend("ollama", {
+            env = {
+              url = "http://worker.carastello.it:11434"
+            },
+            headers = {
+              ["Content-Type"] = "application/json"
+            },
+            parameters = {
+              sync = true,
+            },
+          })
+        end,
+      }
     },
-  }
+    interactions = {
+      chat = {
+        adapter = "ollama",
+        model = "gemma4:latest"
+      },
+      inline = {
+        adapter = "ollama",
+        model = "gemma4:latest"
+      }
+    }
+  },
 }
